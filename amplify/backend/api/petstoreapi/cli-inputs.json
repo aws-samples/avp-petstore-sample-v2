@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "paths": {
+    "/store/{storeId}/pets": {
+      "name": "/store/{storeId}/pets",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/inventory": {
+      "name": "/store/{storeId}/inventory",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/orders": {
+      "name": "/store/{storeId}/orders",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/order/create": {
+      "name": "/store/{storeId}/order/create",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/pet/get/{petId}": {
+      "name": "/store/{storeId}/pet/get/{petId}",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/order/get/{orderNumber}": {
+      "name": "/store/{storeId}/order/get/{orderNumber}",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/pet/create": {
+      "name": "/store/{storeId}/pet/create",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/order/cancel/{orderNumber}": {
+      "name": "/store/{storeId}/order/cancel/{orderNumber}",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/store/{storeId}/pet/update/{petId}": {
+      "name": "/store/{storeId}/pet/update/{petId}",
+      "lambdaFunction": "petstoresample78b39c63",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/admin/store": {
+      "name": "/admin/store",
+      "lambdaFunction": "petstoreAdminStoreCrud",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/admin/franchise": {
+      "name": "/admin/franchise",
+      "lambdaFunction": "petstoreAdminFranchiseCrud",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/admin/store/{storeId}": {
+      "name": "/admin/store/{storeId}",
+      "lambdaFunction": "petstoreAdminStoreCrud",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/admin/franchise/{franchiseId}": {
+      "name": "/admin/franchise/{franchiseId}",
+      "lambdaFunction": "petstoreAdminFranchiseCrud",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

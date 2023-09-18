@@ -1,0 +1,8 @@
+{
+    "CustomerPolicy1": "permit ( \n principal in MyApplication::Group::\"Customer\", \n action in [MyApplication::Action::\"SearchPets\", MyApplication::Action::\"PlaceOrder\"], \n    resource \n );",
+    "CustomerPolicy2": "permit ( \n principal in MyApplication::Group::\"Customer\", \n    action in [MyApplication::Action::\"GetOrder\"], \n    resource \n) when { \n    principal == resource.owner \n};",
+    "FranchiseOwnerPolicy1": "permit ( \n    principal in MyApplication::Group::\"FranchiseOwnerRole\", \n    action in [ \n        MyApplication::Action::\"GetStoreInventory\", \n        MyApplication::Action::\"ListOrders\" \n    ], \n    resource) \nwhen {   \n    principal has employmentStoreFranchiseCodes && \n    resource in (principal.employmentStoreFranchiseCodes)  \n};",
+    "FranchiseOwnerPolicy2": "permit ( \n    principal in MyApplication::Group::\"FranchiseOwnerRole\", \n    action in [MyApplication::Action::\"GetOrder\"], \n    resource \n) \nwhen \n{ \n    principal has employmentStoreFranchiseCodes &&  \n    resource.store in (principal.employmentStoreFranchiseCodes) \n};",
+    "StoreOwnerPolicy1": "permit ( \n    principal in MyApplication::Group::\"StoreOwnerRole\", \n    action in [ \n        MyApplication::Action::\"GetStoreInventory\", \n        MyApplication::Action::\"ListOrders\" \n    ], \n    resource) \nwhen { resource in (principal.employmentStoreCodes) };",
+    "StoreOwnerPolicy2": "permit (\n    principal in MyApplication::Group::\"StoreOwnerRole\",\n    action in [\n        MyApplication::Action::\"GetOrder\"\n    ],\n    resource) \nwhen { resource.store in (principal.employmentStoreCodes) };"
+}

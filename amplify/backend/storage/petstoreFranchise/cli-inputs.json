@@ -1,0 +1,10 @@
+{
+  "resourceName": "petstoreFranchise",
+  "tableName": "petstoreFranchise",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

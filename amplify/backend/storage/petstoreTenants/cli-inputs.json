@@ -1,0 +1,14 @@
+{
+  "resourceName": "petstoreTenants",
+  "tableName": "petstoreTenants",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "value",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

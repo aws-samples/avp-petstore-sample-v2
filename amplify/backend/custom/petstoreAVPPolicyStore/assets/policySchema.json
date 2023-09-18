@@ -1,0 +1,166 @@
+{
+    "MyApplication": {
+        "entityTypes": {
+            "StoreFranchise": {
+                "shape": {
+                    "type": "Record",
+                    "attributes": {
+                        "stores": {
+                            "element": {
+                                "type": "Entity",
+                                "name": "Store"
+                            },
+                            "type": "Set",
+                            "required": false
+                        },
+                        "name": {
+                            "type": "String"
+                        }
+                    }
+                },
+                "memberOfTypes": []
+            },
+            "Group": {
+                "memberOfTypes": [],
+                "shape": {
+                    "attributes": {},
+                    "type": "Record"
+                }
+            },
+            "Store": {
+                "memberOfTypes": [
+                    "StoreFranchise"
+                ],
+                "shape": {
+                    "type": "Record",
+                    "attributes": {
+                        "geo": {
+                            "type": "String"
+                        }
+                    }
+                }
+            },
+            "Pet": {
+                "shape": {
+                    "attributes": {
+                        "owner": {
+                            "type": "Entity",
+                            "name": "User"
+                        },
+                        "store": {
+                            "name": "Store",
+                            "type": "Entity"
+                        }
+                    },
+                    "type": "Record"
+                },
+                "memberOfTypes": []
+            },
+            "Order": {
+                "memberOfTypes": [],
+                "shape": {
+                    "attributes": {
+                        "owner": {
+                            "name": "User",
+                            "type": "Entity"
+                        },
+                        "store": {
+                            "name": "Store",
+                            "type": "Entity"
+                        }
+                    },
+                    "type": "Record"
+                }
+            },
+            "Application": {
+                "shape": {
+                    "type": "Record",
+                    "attributes": {
+                        "store": {
+                            "type": "Entity",
+                            "name": "Store"
+                        }
+                    }
+                },
+                "memberOfTypes": []
+            },
+            "User": {
+                "shape": {
+                    "type": "Record",
+                    "attributes": {
+                        "employmentStoreFranchiseCodes": {
+                            "type": "Set",
+                            "required": false,
+                            "element": {
+                                "type": "Entity",
+                                "name": "StoreFranchise"
+                            }
+                        },
+                        "employmentStoreCodes": {
+                            "element": {
+                                "type": "Entity",
+                                "name": "Store"
+                            },
+                            "type": "Set"
+                        }
+                    }
+                },
+                "memberOfTypes": [
+                    "Group"
+                ]
+            }
+        },
+        "actions": {
+            "GetOrder": {
+                "appliesTo": {
+                    "resourceTypes": [
+                        "Order"
+                    ],
+                    "principalTypes": [
+                        "User"
+                    ]
+                }
+            },
+            "GetStoreInventory": {
+                "appliesTo": {
+                    "principalTypes": [
+                        "User"
+                    ],
+                    "resourceTypes": [
+                        "Store"
+                    ]
+                }
+            },
+            "SearchPets": {
+                "appliesTo": {
+                    "principalTypes": [
+                        "User"
+                    ],
+                    "resourceTypes": [
+                        "Store"
+                    ]
+                }
+            },
+            "ListOrders": {
+                "appliesTo": {
+                    "principalTypes": [
+                        "User"
+                    ],
+                    "resourceTypes": [
+                        "Store"
+                    ]
+                }
+            },
+            "PlaceOrder": {
+                "appliesTo": {
+                    "principalTypes": [
+                        "User"
+                    ],
+                    "resourceTypes": [
+                        "Store"
+                    ]
+                }
+            }
+        }
+    }
+}

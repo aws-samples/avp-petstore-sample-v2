@@ -1,0 +1,258 @@
+{
+  "api": {
+    "petstoreapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "petstoresample78b39c63"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "petstoreAdminStoreCrud"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "petstoreAdminFranchiseCrud"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "petstoresample483a619c": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "petstoresample483a619c"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
+    }
+  },
+  "custom": {
+    "apiUsagePlan": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "RootUrl",
+            "ApiName",
+            "ApiId"
+          ],
+          "category": "api",
+          "resourceName": "petstoreapi"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "customCDK"
+    },
+    "petstoreAVPPolicyStore": {
+      "providerPlugin": "awscloudformation",
+      "service": "customCDK"
+    }
+  },
+  "function": {
+    "petstoreAdminFranchiseCrud": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "petstoreFranchise"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "petstoreAdminStoreCrud": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "petstoreTenants"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "petstoreAuthorizer": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb"
+          ],
+          "category": "auth",
+          "resourceName": "petstoresample483a619c"
+        },
+        {
+          "attributes": [
+            "PetstorePolicyStoreId"
+          ],
+          "category": "custom",
+          "resourceName": "petstoreAVPPolicyStore"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "petstoresample78b39c63": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb"
+          ],
+          "category": "auth",
+          "resourceName": "petstoresample483a619c"
+        },
+        {
+          "attributes": [
+            "PetstorePolicyStoreId"
+          ],
+          "category": "custom",
+          "resourceName": "petstoreAVPPolicyStore"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "hosting": {},
+  "parameters": {
+    "AMPLIFY_function_petstoreAdminFranchiseCrud_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoreAdminFranchiseCrud"
+        }
+      ]
+    },
+    "AMPLIFY_function_petstoreAdminFranchiseCrud_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoreAdminFranchiseCrud"
+        }
+      ]
+    },
+    "AMPLIFY_function_petstoreAdminStoreCrud_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoreAdminStoreCrud"
+        }
+      ]
+    },
+    "AMPLIFY_function_petstoreAdminStoreCrud_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoreAdminStoreCrud"
+        }
+      ]
+    },
+    "AMPLIFY_function_petstoreAuthorizer_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoreAuthorizer"
+        }
+      ]
+    },
+    "AMPLIFY_function_petstoreAuthorizer_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoreAuthorizer"
+        }
+      ]
+    },
+    "AMPLIFY_function_petstoresample78b39c63_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoresample78b39c63"
+        }
+      ]
+    },
+    "AMPLIFY_function_petstoresample78b39c63_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "petstoresample78b39c63"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "petstoreFranchise": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "petstoreTenants": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

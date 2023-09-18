@@ -1,0 +1,14 @@
+[
+  {
+    "groupName": "Customer",
+    "precedence": 1
+  },
+  {
+    "groupName": "StoreOwnerRole",
+    "precedence": 2
+  },
+  {
+    "groupName": "FranchiseOwnerRole",
+    "precedence": 3
+  }
+]

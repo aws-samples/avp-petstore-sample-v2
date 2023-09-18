@@ -1,0 +1,19 @@
+{
+  "name": "overrides-for-auth-resource",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@aws-amplify/cli-extensibility-helper": "^3.0.0",
+    "aws-jwt-verify": "^4.0.0",
+    "aws-sdk": "^2.1446.0",
+    "superagent": "^8.1.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  }
+}
