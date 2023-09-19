@@ -68,7 +68,7 @@ function App({ signOut, user }) {
                   
                     <TextField padding="10px" onChange={e => storeId = e.target.value} placeholder="PetStore Id eg. petstore-london" label="Enter PetStore Identifier" /><br/>
                         
-                    <Expander type="multiple" defaultValue={['line-1','line-2','line-3']}>
+                    <Expander type="multiple" defaultValue={['line-1','line-2','line-3','line-4']}>
   
                       <Divider orientation="horizontal" />
                       
@@ -111,7 +111,7 @@ function App({ signOut, user }) {
                       {roles.includes('FranchiseOwnerRole') ? (
                       <div>
                         <Divider orientation="horizontal" />
-                          <ExpanderItem title="Franchise Owner actions" value="line-3">
+                          <ExpanderItem title="Franchise Owner actions" value="line-4">
                             <Text textAlign="left" variation="info">Franchise Owner can get all orders and inventory of pets for all its' stores.</Text><br/>
                             <TextField onChange={e => orderNumber = e.target.value}  placeholder="Order Number, 123 for example" label="View Order" outerStartComponent={<Button onClick={() => getData('/order/get/'+orderNumber, 'GET')}>View Order</Button>}/><br/>
                             <Button onClick={() => getData('/orders', 'GET')}>List All Orders</Button>
