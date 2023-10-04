@@ -4,11 +4,15 @@
 
 This sample web application v2 demonstrates authentication and policy-based authorization of diffrent user types to an imaginary Pet Store web app. This application uses Amazon Cognito for authentication and uses Amazon Verified Permissions for policy-based authorization, the application uses Amplify platform to accelerate deployment and provisioning of backend resources. To access sample v1 go to [avp-petstore-sample repo](https://github.com/aws-samples/avp-petstore-sample)
 
+After successful deployment of the sample application into your environment, the architecture created is below:
+
+![Update](static/PetStore-RefArch-v2.png)
+
 The first step to test this sample application is to login to your AWS console then click the link above to deploy this sample application in your AWS account using Amplify hosting. This will also create backend resources needed for the application like Amazon Cognito user pool, API Gateway project and Lambda function to simulate backend service. Application will go through provision, build and deploy stages and might take several minutes to complete.
 
 ![Update](static/PetStore-deploy.gif)
 
-After successful deployment of the sample application, follow the steps below to create users, associate usage plan to API Gateway Deployment, and create sample stores and franchises.
+Follow the steps below to create users, associate usage plan to API Gateway Deployment, and create sample stores and franchises.
 
 ## Managing users and groups in Amazon Cognito
 
