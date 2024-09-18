@@ -1,15 +1,14 @@
 import { Amplify, API, Auth } from 'aws-amplify';
 
 import { withAuthenticator,
-  Expander, 
-  ExpanderItem,
+  Accordion, 
   Button,  
   Heading,
   Link,
   Flex,
   View,
   Text, 
-  Divider,Tabs, TabItem, Alert, TextField, Grid,TextAreaField,
+  Divider,Tabs, Alert, TextField, Grid,TextAreaField,
   useTheme} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useState } from 'react';
@@ -62,25 +61,31 @@ function App({ signOut, user }) {
             width="86%" minHeight="300px" boxShadow="3px 3px 5px 6px var(--amplify-colors-neutral-60)" opacity="90">
             
             <Tabs defaultIndex={0} >
-              <TabItem title="Action simulation">
+            <Tabs.List>
+              <Tabs.Item value="Action simulation">
+              Action simulation
+              </Tabs.Item>
+              <Tabs.Panel value="Action Simulator">
                 <Grid templateColumns="1fr 1fr">
                   <View textAlign="left">
                   
                     <TextField padding="10px" onChange={e => storeId = e.target.value} placeholder="PetStore Id eg. petstore-london" label="Enter PetStore Identifier" /><br/>
                         
-                    <Expander type="multiple" defaultValue={['line-1','line-2','line-3','line-4']}>
+                    <Accordion.Container type="multiple" defaultValue={['line-1','line-2','line-3','line-4']}>
   
                       <Divider orientation="horizontal" />
                       
                        
                       { roles.includes('Customer') ? (
                       <div>
-                        <ExpanderItem title="Customer role type actions" value="line-1">
+                        <Accordion.Item title="Customer role type actions" value="line-1">
+                        <Accordion.Content>
                           <Text textAlign="left" variation="info">Customers can search for pets, order pets and cancel orders. </Text><br/>
                           <Button onClick={() => getData('/pets', 'GET')}>Search Pets</Button>
                           <Button onClick={() => getData('/order/create', 'POST')}>Place Order</Button>
                           <TextField onChange={e => orderNumber = e.target.value}  placeholder="Order Number, 123 for example" label="View Order" outerStartComponent={<Button onClick={() => getData('/order/get/'+orderNumber, 'GET')}>View Order</Button>}/><br/>
-                        </ExpanderItem>
+                          </Accordion.Content>
+                        </Accordion.Item>
                       </div>
                       ): null}
                       
@@ -89,36 +94,42 @@ function App({ signOut, user }) {
                       <div>
                         <TextField onChange={e => storeId = e.target.value} placeholder="PetStore Id eg. petstore-london" label="Enter PetStore Identifier" /><br/>
                         <Divider orientation="horizontal" />
-                        <ExpanderItem title="Pet Groomer role actions" value="line-2">
+                        <Accordion.Item title="Pet Groomer role actions" value="line-2">
+                        <Accordion.Content>
                           <Text textAlign="left" variation="info">Pet Groomers can add pets, edit pet details and  get order details  .</Text><br/>
                           <Button onClick={() => getData('/pet/create', 'POST')}>Add Pet</Button>
                           <TextField onChange={e => petId = e.target.value} placeholder="Pet ID, 123 for example" label="Edit pet details" outerStartComponent={<Button onClick={(e) => getData('/pet/update/'+petId, 'POST')}>Submit</Button>}/><br/>
                           <TextField onChange={e => orderNumber = e.target.value}  placeholder="Order Number, 123 for example" label="Get order details" outerStartComponent={<Button onClick={() => getData('/order/get/'+orderNumber, 'GET')}>Submit</Button>}/><br/>
-                      </ExpanderItem>
+                          </Accordion.Content>
+                      </Accordion.Item>
                       </div>
                       ) : null}
                       
                       {roles.includes('StoreOwnerRole') ? (
                       <div>
                         <Divider orientation="horizontal" />
-                          <ExpanderItem title="Store Owner actions" value="line-3">
+                          <Accordion.Item title="Store Owner actions" value="line-3">
+                          <Accordion.Content>
                             <Text textAlign="left" variation="info">Store Manager can get all orders and inventory of pets.</Text><br/>
                             <TextField onChange={e => orderNumber = e.target.value}  placeholder="Order Number, 123 for example" label="View Order" outerStartComponent={<Button onClick={() => getData('/order/get/'+orderNumber, 'GET')}>View Order</Button>}/><br/>
                             <Button onClick={() => getData('/orders', 'GET')}>List All Orders</Button>
-                          </ExpanderItem>
+                          </Accordion.Content>
+                          </Accordion.Item>
                       </div>
                       ): null}
                       {roles.includes('FranchiseOwnerRole') ? (
                       <div>
                         <Divider orientation="horizontal" />
-                          <ExpanderItem title="Franchise Owner actions" value="line-4">
+                          <Accordion.Item title="Franchise Owner actions" value="line-4">
+                          <Accordion.Content>
                             <Text textAlign="left" variation="info">Franchise Owner can get all orders and inventory of pets for all its' stores.</Text><br/>
                             <TextField onChange={e => orderNumber = e.target.value}  placeholder="Order Number, 123 for example" label="View Order" outerStartComponent={<Button onClick={() => getData('/order/get/'+orderNumber, 'GET')}>View Order</Button>}/><br/>
                             <Button onClick={() => getData('/orders', 'GET')}>List All Orders</Button>
-                          </ExpanderItem>
+                            </Accordion.Content>
+                          </Accordion.Item>
                       </div>
                       ): null}
-                    </Expander>
+                    </Accordion.Container>
                   </View>
                   
                   <View padding="10px" textAlign="left">
@@ -130,7 +141,8 @@ function App({ signOut, user }) {
                     } value={authResult} /> 
                   </View>
                 </Grid>
-              </TabItem>
+                </Tabs.Panel>
+              </Tabs.List>
             </Tabs>
             
           </View>
