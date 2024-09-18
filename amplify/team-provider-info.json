@@ -71,7 +71,6 @@
         "petstoreapi": {}
       },
       "custom": {
-        "apiUsagePlan": {},
         "petstoreAVPPolicyStore": {}
       },
       "storage": {
