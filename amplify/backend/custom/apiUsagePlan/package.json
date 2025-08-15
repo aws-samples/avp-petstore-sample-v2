@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@aws-amplify/cli-extensibility-helper": "3.0.10",
-    "aws-cdk-lib": "~2.68.0",
+    "aws-cdk-lib": "~2.189.1",
     "constructs": "^10.3.0",
     "uuid": "^9.0.1"
   },
